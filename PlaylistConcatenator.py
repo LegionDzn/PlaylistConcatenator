@@ -50,9 +50,11 @@ else:
 print(f"Total scenarios: {len(merged_data['scenarioList'])}")
 
 
-script_dir = os.path.dirname(os.path.abspath(__file__))
+script_dir = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
 merged_data = merge_scenario_lists(file1, file2, consistent_play_count)
-merged_file_path = os.path.join(script_dir, f"{merged_data['playlistName']}_merged.json")
+merged_file_path = os.path.join(script_dir, f"{merged_data['playlistName']}.json")
 with open(merged_file_path, "w") as f:
     json.dump(merged_data, f, indent=2)
     print("File created at " + merged_file_path)
+
+input('Press ENTER to exit')
